@@ -23,7 +23,7 @@ requirements:
     - flit-core
   run:
     - python
-    - tomli >=1.1.0
+    - tomli >=1.1.0  # [py<311]
 
 test:
   imports:
