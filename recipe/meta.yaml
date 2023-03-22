@@ -10,17 +10,17 @@ source:
   sha256: f271b298b97f5955d53fb12b72c1fb1948c22c1a6b70b315c54cedaca0264ef5
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<38]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps
   number: 0
 
 requirements:
   host:
-    - python >=3.7
+    - python 
     - pip
-    - flit-core >=3.2, <4
+    - flit-core
   run:
-    - python >=3.7
+    - python
     - tomli >=1.1.0
 
 test:
