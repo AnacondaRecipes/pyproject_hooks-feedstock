@@ -36,10 +36,16 @@ test:
 about:
   home: https://pypi.org/project/pyproject_hooks/
   summary: Wrappers to call pyproject.toml-based build backend hooks.
+  description: |
+    This is a low-level library for calling build-backends 
+    in pyproject.toml-based project. It provides the basic functionality 
+    to help write tooling that generates distribution files from Python projects.
   dev_url: https://github.com/pypa/pyproject-hooks
   license: MIT
   license_file:
     - LICENSE
+  license_family: MIT
+  doc_url: https://pyproject-hooks.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
