@@ -6,12 +6,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyproject_hooks-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 1e859bd5c40fae9448642dd871adf459e5e2084186e8d2c2a79a824c970da1f8
 
 build:
   skip: true  # [py<37]
-  script: {{ PYTHON }} -m pip install . -vv --no-deps
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
@@ -21,18 +21,23 @@ requirements:
     - flit-core >=3.2,<4
   run:
     - python
-    - tomli >=1.1.0  # [py<311]
 
 test:
   imports:
     - pyproject_hooks
-  commands:
-    - pip check
+  source_files:
+    - tests
   requires:
     - pip
+    - pytest
+    - testpath
+    - tomli >=1.1.0  # [py<311]
+  commands:
+    - pip check
+    - pytest -v tests/
 
 about:
-  home: https://pypi.org/project/pyproject_hooks/
+  home: https://github.com/pypa/pyproject-hooks
   summary: Wrappers to call pyproject.toml-based build backend hooks.
   description: |
     This is a low-level library for calling build-backends
@@ -40,10 +45,9 @@ about:
     to help write tooling that generates distribution files from Python projects.
   dev_url: https://github.com/pypa/pyproject-hooks
   license: MIT
-  license_file:
-    - LICENSE
+  license_file: LICENSE
   license_family: MIT
-  doc_url: https://pyproject-hooks.readthedocs.io/en/latest/
+  doc_url: https://pyproject-hooks.readthedocs.io
 
 extra:
   recipe-maintainers:
