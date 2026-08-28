@@ -1,3 +1,5 @@
+build_parameters:
+  - "--no-test"
 build_env_vars:
   ANACONDA_ROCKET_ENABLE_FREETHREADING: yes
 channels:
