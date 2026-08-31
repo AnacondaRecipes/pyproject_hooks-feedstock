@@ -12,13 +12,13 @@ source:
 build:
   skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
-
+  number: 2
 requirements:
   host:
     - python
     - pip
-    - flit-core >=3.2,<4
+    # upstream 1.2.0 says flit_core>=3.2,<4; no 3.x cp314t on main, only 4.0.2 t
+    - flit-core >=3.2
   run:
     - python
 
